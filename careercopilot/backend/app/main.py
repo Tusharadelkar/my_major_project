@@ -1,5 +1,6 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, File, UploadFile, Form, Depends, HTTPException
+from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 import base64
 import os
@@ -9,7 +10,7 @@ import logging
 try:
     from dotenv import load_dotenv
     _env_path = os.path.join(os.path.dirname(__file__), "..", "..", ".env")
-    load_dotenv(dotenv_path=os.path.abspath(_env_path), override=False)
+    load_dotenv(dotenv_path=os.path.abspath(_env_path), override=True)
 except ImportError:
     pass  # python-dotenv not installed — rely on shell env vars
 from .database import engine, get_db
@@ -46,6 +47,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.get("/")
+async def root():
+    return RedirectResponse(url="/docs")
 
 @app.get("/health")
 async def health_check():

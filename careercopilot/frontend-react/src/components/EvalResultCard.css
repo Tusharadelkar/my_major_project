@@ -1,0 +1,77 @@
+.eval-card { padding: 2rem; }
+
+.eval-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+.eval-badge {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #34d399;
+}
+.eval-progress {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.eval-scores {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.score-block { display: flex; flex-direction: column; gap: 0.4rem; }
+
+.score-label-sm {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.stars { display: flex; align-items: center; gap: 3px; }
+.star { font-size: 1.4rem; transition: var(--transition); }
+.star.filled { color: #f59e0b; }
+.star.empty  { color: var(--border); }
+.star-label {
+  margin-left: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.score-divider {
+  width: 1px;
+  background: var(--border);
+  align-self: stretch;
+}
+
+.eval-feedback { margin-bottom: 1rem; }
+.eval-section-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.feedback-text {
+  font-size: 0.97rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.transcript-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-style: italic;
+  background: rgba(255,255,255,0.02);
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}

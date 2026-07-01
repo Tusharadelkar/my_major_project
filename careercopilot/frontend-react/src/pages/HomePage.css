@@ -1,0 +1,100 @@
+/* Hero */
+.hero-section {
+  text-align: center;
+  padding: 5rem 1rem 4rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(99,102,241,0.12);
+  border: 1px solid rgba(99,102,241,0.3);
+  color: #a5b4fc;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.04em;
+}
+.hero-title {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+}
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+}
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Features */
+.features-section { margin: 2rem 0 3rem; }
+.features-heading {
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+}
+
+.feature-card {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  cursor: default;
+}
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-indigo);
+  box-shadow: var(--glow-indigo), 0 20px 40px rgba(0,0,0,0.3);
+}
+.feature-icon { font-size: 2rem; }
+.feature-title { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); }
+.feature-desc  { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+/* Session */
+.session-section { margin: 1rem 0 4rem; display: flex; justify-content: center; }
+
+.session-active {
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  border-color: rgba(16,185,129,0.3);
+  background: rgba(5,46,22,0.3);
+}
+.session-active-icon {
+  width: 40px; height: 40px;
+  background: rgba(16,185,129,0.15);
+  border: 1px solid rgba(16,185,129,0.3);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; color: #34d399; font-weight: 700;
+}
+
+.session-form-card {
+  max-width: 500px;
+  width: 100%;
+  border-color: var(--border-accent);
+}
+.session-form-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: var(--text-primary);
+}

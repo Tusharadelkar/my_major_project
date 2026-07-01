@@ -6,7 +6,7 @@ import requests
 logger = logging.getLogger(__name__)
 
 D_ID_BASE_URL = "https://api.d-id.com"
-DEFAULT_AVATAR_URL = "https://create-images-results.d-id.com/Default_Images/Avatar_Doctor.png"
+DEFAULT_AVATAR_URL = "https://d-id-public-bucket.s3.us-west-2.amazonaws.com/alice.jpg"
 
 def get_auth_headers() -> dict:
     """Helper to get D-ID API headers with Basic Auth."""

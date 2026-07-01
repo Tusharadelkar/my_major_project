@@ -138,14 +138,16 @@ class TestResumeParserAndScorer(unittest.TestCase):
         self.__class__.question_ids = [q["id"] for q in questions_list]
         self.__class__.question_skills = {q["id"]: q["skill_tag"] for q in questions_list}
         
-        # Check keys in list items
+        # Verify that at least one question (the active/first unanswered one) has base64 audio returned
+        has_audio = False
         for q in questions_list:
             self.assertIn("id", q)
             self.assertIn("question", q)
             self.assertIn("skill_tag", q)
             self.assertIn("audio_base64", q)
-            # Verify base64 audio is returned
-            self.assertTrue(len(q["audio_base64"]) > 0)
+            if len(q["audio_base64"]) > 0:
+                has_audio = True
+        self.assertTrue(has_audio)
 
     def test_05_answer_text_endpoint(self):
         """Test POST /api/interview/{session_id}/answer-text evaluates answers and returns status."""

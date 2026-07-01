@@ -1,0 +1,164 @@
+.audio-recorder {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+/* ── Mic Permission Banner ── */
+.mic-permission-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.9rem 1.1rem;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: var(--radius-md);
+  width: 100%;
+  animation: fadeIn 0.3s ease;
+}
+
+.mic-perm-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.mic-perm-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+.mic-perm-text strong {
+  font-size: 0.88rem;
+  color: var(--text-primary);
+}
+.mic-perm-text span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.mic-perm-btn {
+  background: rgba(99, 102, 241, 0.18);
+  color: #a5b4fc;
+  border: 1px solid rgba(99, 102, 241, 0.45);
+  padding: 0.45rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.mic-perm-btn:hover {
+  background: rgba(99, 102, 241, 0.3);
+  color: #c7d2fe;
+}
+
+.record-btn {
+  font-size: 1rem;
+  padding: 0.75rem 1.75rem;
+}
+
+.record-icon { font-size: 1.1rem; }
+
+/* Recording active state */
+.recording-active {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.recording-waves {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 32px;
+}
+
+@keyframes wave-bounce {
+  0%, 100% { height: 6px; }
+  50%       { height: 28px; }
+}
+
+.wave-bar {
+  display: block;
+  width: 4px;
+  height: 6px;
+  background: linear-gradient(180deg, var(--accent-purple), var(--accent-indigo));
+  border-radius: 2px;
+  animation: wave-bounce 0.8s ease-in-out infinite;
+}
+
+.recording-timer {
+  font-family: 'Outfit', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-red);
+  letter-spacing: 0.05em;
+  min-width: 52px;
+}
+
+.stop-btn {
+  background: rgba(239,68,68,0.15);
+  color: #f87171;
+  border: 1px solid rgba(239,68,68,0.35);
+  padding: 0.6rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+}
+.stop-btn:hover {
+  background: rgba(239,68,68,0.25);
+}
+
+/* Inline mic error card */
+.mic-error {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1rem 1.25rem;
+  background: rgba(251, 146, 60, 0.08);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+  border-radius: var(--radius-md);
+  max-width: 420px;
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.mic-error__icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.mic-error__message {
+  font-size: 0.875rem;
+  color: #fcd34d;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.mic-error__retry {
+  align-self: flex-start;
+  background: rgba(251, 146, 60, 0.15);
+  color: #fb923c;
+  border: 1px solid rgba(251, 146, 60, 0.4);
+  padding: 0.5rem 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.mic-error__retry:hover {
+  background: rgba(251, 146, 60, 0.28);
+}

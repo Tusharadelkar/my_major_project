@@ -1,0 +1,175 @@
+.avatar-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.75rem 1.25rem;
+  min-height: 320px;
+  justify-content: center;
+}
+
+/* ── Ring ── */
+.avatar-ring {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  background:
+    linear-gradient(var(--bg-surface), var(--bg-surface)) padding-box,
+    linear-gradient(135deg, var(--accent-indigo), var(--accent-purple)) border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 30px rgba(99,102,241,0.2);
+  transition: box-shadow 0.4s ease;
+}
+
+.avatar-ring.ring-speaking {
+  box-shadow:
+    0 0 0 4px rgba(99,102,241,0.25),
+    0 0 35px rgba(99,102,241,0.45),
+    0 0 70px rgba(168,85,247,0.2);
+  animation: ring-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes ring-pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(99,102,241,0.25), 0 0 35px rgba(99,102,241,0.45), 0 0 70px rgba(168,85,247,0.2); }
+  50%       { box-shadow: 0 0 0 8px rgba(99,102,241,0.15), 0 0 50px rgba(99,102,241,0.6), 0 0 90px rgba(168,85,247,0.3); }
+}
+
+/* ── Live Video ── */
+.avatar-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* ── Connecting placeholder ── */
+.avatar-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.avatar-bot-icon {
+  width: 80px;
+  height: 80px;
+}
+.avatar-bot-icon svg { width: 100%; height: 100%; }
+
+@keyframes avatar-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.08); }
+}
+.avatar-bot-icon.pulsing svg {
+  animation: avatar-pulse 1.4s ease-in-out infinite;
+}
+
+.avatar-status-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ── Demo AI Face ── */
+.avatar-demo-face {
+  width: 170px;
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  gap: 6px;
+}
+
+.avatar-demo-face svg {
+  width: 130px;
+  height: 130px;
+  transition: transform 0.3s ease;
+}
+
+.avatar-demo-face.speaking svg {
+  animation: face-bob 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes face-bob {
+  0%   { transform: translateY(0px); }
+  100% { transform: translateY(-4px); }
+}
+
+/* Mouth open animation */
+.mouth-open {
+  animation: mouth-pulse 0.35s ease-in-out infinite alternate;
+}
+
+@keyframes mouth-pulse {
+  0%   { ry: 3; }
+  100% { ry: 8; }
+}
+
+/* Speaking sound waves below avatar face */
+.speak-waves {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 20px;
+  position: absolute;
+  bottom: 0;
+}
+
+.speak-wave {
+  display: block;
+  width: 5px;
+  height: 10px;
+  background: linear-gradient(180deg, #818cf8, #a855f7);
+  border-radius: 3px;
+  animation: speak-bar 0.55s ease-in-out infinite alternate;
+}
+
+@keyframes speak-bar {
+  0%   { height: 4px;  opacity: 0.6; }
+  100% { height: 18px; opacity: 1; }
+}
+
+/* ── Name Badge ── */
+.avatar-name-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  margin-top: 0.25rem;
+}
+
+.avatar-ai-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.03em;
+}
+
+.avatar-ai-role {
+  font-size: 0.75rem;
+  color: var(--accent-purple);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── Connected Badge ── */
+.avatar-connected-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-full);
+  transition: all 0.3s ease;
+}

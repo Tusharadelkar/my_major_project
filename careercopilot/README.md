@@ -22,14 +22,16 @@ careercopilot/
 │   ├── Dockerfile
 │   └── requirements.txt      # Backend Python package requirements
 │
-├── frontend/                 # Streamlit Web Application (Python)
-│   ├── pages/
-│   │   ├── 1_Upload_Resume.py # Upload portal, ATS scorecard, and skill gaps page
-│   │   └── 2_Mock_Interview.py# Audio interview console with speech recordings & scorecard
-│   ├── app.py                # Main home landing page
-│   ├── state.py              # Shared Streamlit session state wrapper
+├── frontend-react/           # React + Vite Web Application (Javascript)
+│   ├── src/
+│   │   ├── api/
+│   │   │   └── client.js     # Axios API client pointing to FastAPI backend
+│   │   ├── components/       # Custom React components (Navbar, AudioRecorder, etc.)
+│   │   ├── App.jsx           # Main React component
+│   │   └── index.css         # Modern styling & typography system
 │   ├── Dockerfile
-│   └── requirements.txt      # Frontend Python package requirements
+│   ├── package.json          # Node package requirements & scripts
+│   └── vite.config.js        # Vite build configuration (exposed on port 5173)
 │
 ├── docker-compose.yml        # Multi-container service orchestration
 ├── .env.example              # Template configuration for environment settings
@@ -57,8 +59,8 @@ GROQ_API_KEY=your_groq_api_key_here
 # Speech Synthesis (Optional, falls back to Google TTS if not provided)
 ELEVENLABS_API_KEY=your_elevenlabs_api_key_here
 
-# Communication endpoint
-BACKEND_URL=http://backend:8000
+# D-ID Avatar Configuration (Optional)
+DID_API_KEY=your_did_api_key_here
 ```
 
 ---
@@ -66,36 +68,36 @@ BACKEND_URL=http://backend:8000
 ## 🚀 Running the Project
 
 ### Option A: Local Execution (Without Docker)
-This is the recommended method if Docker is not installed on your system.
 
-1. **Prerequisites**:
-   Ensure you have Python 3.11+ installed.
+#### 1. Start the Backend API Server
+Ensure you have Python 3.11+ installed.
 
-2. **Configure `.env`**:
-   To run completely offline without setting up a local PostgreSQL, you can use SQLite:
-   ```env
-   DATABASE_URL=sqlite:///./local_temp.db
-   BACKEND_URL=http://localhost:8000
-   GROQ_API_KEY=your_actual_groq_api_key
-   ```
+```bash
+cd careercopilot/backend
 
-3. **Start the Backend API Server**:
-   ```bash
-   cd careercopilot/backend
-   pip install -r requirements.txt
-   uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-   ```
-   *Note: On first startup, the server automatically seeds the ChromaDB vector database with 110 baseline questions.*
+# Install dependencies
+pip install -r requirements.txt
 
-4. **Start the Frontend Streamlit App**:
-   ```bash
-   cd careercopilot/frontend
-   pip install -r requirements.txt
-   streamlit run app.py --server.port 8501
-   ```
+# Start the server (port 8000)
+# Note: On first startup, the server automatically seeds the ChromaDB vector database with baseline questions.
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
 
-5. **Access the Application**:
-   Open [http://localhost:8501](http://localhost:8501) in your browser.
+#### 2. Start the React Frontend App
+Ensure you have Node.js 18+ installed.
+
+```bash
+cd careercopilot/frontend-react
+
+# Install dependencies
+npm install
+
+# Start Vite development server (runs on http://localhost:5173)
+npm run dev
+```
+
+#### 3. Access the Application
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ---
 
@@ -109,7 +111,7 @@ If Docker Desktop is installed and running on your machine:
    ```
 
 2. **Access services**:
-   - Streamlit Application: [http://localhost:8501](http://localhost:8501)
+   - React Frontend Application: [http://localhost:5173](http://localhost:5173)
    - FastAPI Documentation: [http://localhost:8000/docs](http://localhost:8000/docs)
    - Health Check: [http://localhost:8000/health](http://localhost:8000/health)
 
